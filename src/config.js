@@ -15,7 +15,7 @@ export const STEPS_DATA = [
   {
     number: "02",
     title: "A gente fecha",
-    desc: "Nossa equipe entra em contato e apresenta a condição, com a Black Friday ativa.",
+    desc: "Nossa equipe entra em contato e negocia com o indicado, com possibilidade de cobrir o preço de frete atual dele.",
     icon: "users"
   },
   {
