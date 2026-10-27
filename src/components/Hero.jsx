@@ -21,6 +21,18 @@ export default function Hero() {
             <span>PROGRAMA DE INDICAÇÃO · FIVE DELIVERY</span>
           </div>
 
+          {/* Arte criativa no mobile (abaixo do chip e acima do título) */}
+          <div className="hero__visual hero__visual--mobile">
+            <div className="hero__aura"></div>
+            <div className="hero__float">
+              <img
+                className="hero__char"
+                src="/img/personagem-caixa.png"
+                alt="Personagem Five segurando a caixa Five Delivery"
+              />
+            </div>
+          </div>
+
           <h1>
             <span className="grad block-text">INDIQUE</span>
             <span className="nowrap-text">
@@ -50,7 +62,8 @@ export default function Hero() {
         <div className="hero__spacer" aria-hidden="true"></div>
       </div>
 
-      <div className="hero__visual">
+      {/* Arte criativa no desktop */}
+      <div className="hero__visual hero__visual--desktop">
         <div className="hero__aura"></div>
         <div className="hero__float">
           <img

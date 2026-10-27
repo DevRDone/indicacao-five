@@ -21,8 +21,8 @@ export default function Navbar() {
   return (
     <header className="nav-container">
       <nav className="nav" aria-label="Navegação Principal">
-        <a href="#" onClick={(e) => handleNavClick(e, null)} className="nav__brand" aria-label="Black Five Home">
-          <Logo height={62} />
+        <a href="#" onClick={(e) => handleNavClick(e, null)} className="nav__brand" aria-label="Five Delivery">
+          <Logo height={52} />
         </a>
 
         <ul className="nav__links desktop-only">
@@ -53,7 +53,7 @@ export default function Navbar() {
             href={getWhatsAppUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn--nav"
+            className="btn btn--nav desktop-only"
           >
             Falar no WhatsApp
           </a>

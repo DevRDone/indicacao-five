@@ -1,17 +1,17 @@
 import React from 'react';
 
-export default function Logo({ height = 56, className = '' }) {
+export default function Logo({ height = 50, className = '' }) {
   return (
-    <img
-      src="/img/logo-five.png"
-      alt="Five Delivery"
-      className={`logo ${className}`.trim()}
-      style={{
-        height: `${height}px`,
-        width: `${height}px`,
-        objectFit: 'contain',
-        display: 'block'
-      }}
-    />
+    <div
+      className={`logo logo-brand ${className}`.trim()}
+      style={{ '--logo-h': `${height}px` }}
+      role="img"
+      aria-label="Five Delivery"
+    >
+      <div className="logo-brand__text">
+        <span className="logo-brand__five">FIVE</span>
+        <span className="logo-brand__delivery">DELIVERY</span>
+      </div>
+    </div>
   );
 }

@@ -177,18 +177,47 @@ h1, h2, h3, .big {
   text-decoration: none;
 }
 
-.nav .logo {
-  height: 54px;
-  width: 54px;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(184, 255, 31, 0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.logo-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--logo-h, 54px);
+  text-decoration: none;
+  user-select: none;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.nav__brand:hover .logo {
-  transform: scale(1.04);
-  box-shadow: 0 0 25px rgba(184, 255, 31, 0.3);
+.nav__brand:hover .logo-brand {
+  transform: scale(1.03);
+  filter: drop-shadow(0 0 10px rgba(184, 255, 31, 0.35));
+}
+
+.logo-brand__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* centralizado no meio */
+  text-align: center;   /* centralizado no meio */
+  line-height: 1;
+}
+
+.logo-brand__five {
+  font-family: Poppins, sans-serif;
+  font-weight: 900;
+  font-size: calc(var(--logo-h, 54px) * 0.63); /* aumentado 15-20px */
+  color: #ffffff;
+  letter-spacing: -0.3px;
+  line-height: 0.95;
+}
+
+.logo-brand__delivery {
+  font-family: Poppins, sans-serif;
+  font-weight: 800;
+  font-size: calc(var(--logo-h, 54px) * 0.24);
+  color: var(--lime);
+  letter-spacing: 3.2px;
+  line-height: 1;
+  margin-top: 3px;
 }
 
 .nav__links {
@@ -404,13 +433,26 @@ h1, h2, h3, .big {
 
 /* Character Visual */
 .hero__visual {
+  pointer-events: none;
+}
+
+.hero__visual--desktop {
   position: absolute;
   z-index: 2;
   right: max(70px, calc((100vw - 1440px) / 2 + 70px));
   top: 130px;
   width: 590px;
   height: 720px;
-  pointer-events: none;
+  display: block;
+}
+
+.hero__visual--desktop .hero__float {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__visual--mobile {
+  display: none;
 }
 
 .hero__aura {
@@ -426,8 +468,6 @@ h1, h2, h3, .big {
 }
 
 .hero__float {
-  position: absolute;
-  inset: 0;
   animation: float 7s ease-in-out infinite;
   filter: drop-shadow(0 0 26px rgba(150, 255, 30, .30)) drop-shadow(0 22px 28px rgba(0, 0, 0, .60));
 }
@@ -746,10 +786,10 @@ h1, h2, h3, .big {
 }
 
 .footer__brand .logo {
-  height: 42px;
-  width: 42px;
-  object-fit: contain;
-  border-radius: 10px;
+  height: 38px;
+  width: auto;
+  max-width: 180px;
+  display: block;
 }
 
 .footer__disclaimer {
@@ -808,13 +848,46 @@ h1, h2, h3, .big {
     font-size: clamp(52px, 11vw, 96px);
   }
 
-  .hero__visual {
+  .hero__visual--desktop {
+    display: none;
+  }
+
+  .hero__visual--mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    right: auto;
-    top: auto;
-    width: min(520px, 92vw);
+    width: 100%;
+    max-width: 360px;
+    margin: 18px auto 28px;
+    pointer-events: none;
+  }
+
+  .hero__visual--mobile .hero__aura {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    height: 85%;
+    filter: blur(28px);
+  }
+
+  .hero__visual--mobile .hero__float {
+    position: relative;
+    inset: auto;
+    width: 100%;
+  }
+
+  .hero__visual--mobile .hero__char {
+    display: block;
+    width: 100%;
     height: auto;
-    margin: 24px auto 0;
+    max-height: 420px;
+    object-fit: contain;
+    margin: 0 auto;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 84%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0, #000 84%, transparent 100%);
   }
 
   .ring--a {
@@ -865,7 +938,23 @@ h1, h2, h3, .big {
 
 @media (max-width: 900px) {
   .nav {
+    position: relative;
     padding: 20px 30px;
+    justify-content: center;
+  }
+
+  .nav__brand {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav__actions {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .desktop-only {
@@ -886,8 +975,13 @@ h1, h2, h3, .big {
     padding: 16px 20px;
   }
 
-  .nav .logo {
-    height: 48px;
+  .nav__actions {
+    right: 20px;
+  }
+
+  .logo-brand {
+    --logo-h: 46px !important;
+    gap: 10px;
   }
 
   .sec {
@@ -896,6 +990,22 @@ h1, h2, h3, .big {
 
   .hero__inner {
     padding: 20px 20px 0;
+  }
+
+  .hero__visual--mobile {
+    max-width: 290px;
+    margin: 14px auto 26px;
+  }
+
+  .hero__visual--mobile .hero__char {
+    max-height: 340px;
+  }
+
+  .btn--hero {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
   }
 
   .sec h2 {
