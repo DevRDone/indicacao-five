@@ -1,4 +1,5 @@
-export const WHATSAPP_NUMBER = "5511999999999";
+export const WHATSAPP_NUMBER = "5521965925664";
+export const WHATSAPP_DISPLAY = "(21) 96592-5664";
 export const WHATSAPP_MESSAGE = "Olá! Quero indicar um cliente para a Five Delivery.";
 
 export const getWhatsAppUrl = () => {
